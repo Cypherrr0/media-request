@@ -1,5 +1,7 @@
 # /req API 参考
 
+推荐通过 `scripts/media_req.py` 调用（见 README）；下面是底层 HTTP 接口。
+
 Base: `$MEDIA_REQ_BASE_URL`（例如 `https://<你的域名>/req`）· Header: `Authorization: Bearer $MEDIA_REQ_API_KEY` · JSON · 限速 30 次/分钟/人
 
 ## GET /search
@@ -11,7 +13,7 @@ Base: `$MEDIA_REQ_BASE_URL`（例如 `https://<你的域名>/req`）· Header: `
 ```
 
 ## POST /request
-Body：`{"id":"movie:tmdb:872585","region":"western"}`
+Body：`{"id":"movie:tmdb:872585","region":"western","dry_run":false}`（`dry_run` 只对允许测试的密钥有效：选出资源但不下载，状态为 `dry_run_selected`）
 id 格式：`movie:tmdb:<n>` 或 `tv:tvdb:<n>`（直接用 search 返回的 id）。
 返回一个状态对象（见下），包含 `request_id`。已存在/超额度时直接返回对应状态。
 文件只会进入请求人自己的片库。每日次数有上限（已存在和超额度的请求不计数）。
