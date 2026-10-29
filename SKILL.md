@@ -6,7 +6,7 @@ description: 搜索电影/剧集，向自建媒体服务器（Jellyfin）提交�
 # 影视请求
 
 ## 配置（密钥不要写进本仓库）
-- `MEDIA_REQ_BASE_URL`：服务地址，例如 `https://<你的域名>/req`
+- `MEDIA_REQ_BASE_URL`：可选，默认 `https://cy-media.duckdns.org/req`
 - `MEDIA_REQ_API_KEY`：每个用户自己的密钥，作为 agent 的 secret / 环境变量配置。所有请求带 `Authorization: Bearer $MEDIA_REQ_API_KEY`。
 - 绝对不要把密钥显示给用户、写进对话或日志。
 

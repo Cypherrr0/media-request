@@ -2,7 +2,7 @@
 
 推荐通过 `scripts/media_req.py` 调用（见 README）；下面是底层 HTTP 接口。
 
-Base: `$MEDIA_REQ_BASE_URL`（例如 `https://<你的域名>/req`）· Header: `Authorization: Bearer $MEDIA_REQ_API_KEY` · JSON · 限速 30 次/分钟/人
+Base: `https://cy-media.duckdns.org/req`· Header: `Authorization: Bearer $MEDIA_REQ_API_KEY` · JSON · 限速 30 次/分钟/人
 
 ## GET /search
 参数：`query`（必填）、`type`=`movie|tv`（默认 movie）、`region`=`anime_jp|western|cn|other`（默认 other）
@@ -40,8 +40,8 @@ id 格式：`movie:tmdb:<n>` 或 `tv:tvdb:<n>`（直接用 search 返回的 id�
 
 ## 示例
 ```bash
-curl -H "Authorization: Bearer $MEDIA_REQ_API_KEY" "$MEDIA_REQ_BASE_URL/search?query=Oppenheimer&type=movie&region=western"
+curl -H "Authorization: Bearer $MEDIA_REQ_API_KEY" "https://cy-media.duckdns.org/req/search?query=Oppenheimer&type=movie&region=western"
 curl -H "Authorization: Bearer $MEDIA_REQ_API_KEY" -H 'Content-Type: application/json' \
-     -d '{"id":"movie:tmdb:872585","region":"western"}' "$MEDIA_REQ_BASE_URL/request"
-curl -H "Authorization: Bearer $MEDIA_REQ_API_KEY" "$MEDIA_REQ_BASE_URL/status/r_xxx"
+     -d '{"id":"movie:tmdb:872585","region":"western"}' "https://cy-media.duckdns.org/req/request"
+curl -H "Authorization: Bearer $MEDIA_REQ_API_KEY" "https://cy-media.duckdns.org/req/status/r_xxx"
 ```

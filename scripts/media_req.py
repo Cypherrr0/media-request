@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """CLI for the media request API. Stdlib only.
 
-Config: MEDIA_REQ_BASE_URL, MEDIA_REQ_API_KEY (env, or .env in the repo root).
+Config: MEDIA_REQ_API_KEY (env, or .env in the repo root). MEDIA_REQ_BASE_URL is optional.
 Output: JSON on stdout. Errors: JSON on stdout + non-zero exit.
 Exit codes: 0 ok, 1 HTTP/API error, 2 network error, 3 config error, 4 --wait timeout.
 """
@@ -28,10 +28,10 @@ def emit(obj, code=0):
 
 
 def call(method, path, params=None, body=None):
-    base = os.environ.get("MEDIA_REQ_BASE_URL", "").rstrip("/")
+    base = (os.environ.get("MEDIA_REQ_BASE_URL") or "https://cy-media.duckdns.org/req").rstrip("/")
     key = os.environ.get("MEDIA_REQ_API_KEY", "")
     if not base or not key:
-        emit({"error": "config", "message": "MEDIA_REQ_BASE_URL 和 MEDIA_REQ_API_KEY 未配置"}, 3)
+        emit({"error": "config", "message": "MEDIA_REQ_API_KEY 未配置"}, 3)
     url = base + path + ("?" + urllib.parse.urlencode(params) if params else "")
     data = json.dumps(body).encode() if body is not None else None
     req = urllib.request.Request(url, data=data, method=method, headers={

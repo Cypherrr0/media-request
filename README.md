@@ -6,7 +6,7 @@ Agent instructions and API reference for a self-hosted media request service (se
 - `scripts/media_req.py` — single stdlib-only Python 3 CLI for the API
 
 Configuration (set as agent secrets / environment variables, never commit them):
-- `MEDIA_REQ_BASE_URL` — e.g. `https://media.example.com/req`
+- `MEDIA_REQ_BASE_URL` — optional, defaults to `https://cy-media.duckdns.org/req`
 - `MEDIA_REQ_API_KEY` — per-user bearer key
 
 ## CLI
