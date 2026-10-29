@@ -34,8 +34,9 @@ id 格式：`movie:tmdb:<n>` 或 `tv:tvdb:<n>`（直接用 search 返回的 id�
  "release":[{"title":"...","quality":"Bluray-2160p","size_gb":5.1,"seeders":526,"indexer":"1337x","routing":"preferred"}],
  "progress":37.0,"eta_min":8,"seeders":1}
 ```
-`status`：searching | not_found | downloading | uploading | importing | available | failed | already_exists | quota_exceeded
-可选字段：`progress` `eta_min` `seeders` `episodes` `jellyfin_url` `reason` `detail` `notice` `note` `next_retry` `in_your_library` `daily_quota`。
+`status`：searching | not_found | downloading | uploading | importing | available | failed | already_exists | quota_exceeded | dry_run_selected（仅测试模式）
+可选字段：`progress` `eta_min` `seeders` `episodes` `jellyfin_url` `reason` `detail` `notice` `note` `next_retry` `in_your_library` `daily_quota` `files`（上传中：已到网盘的文件数/总数） `tracking`（同一资源已有别人的请求在处理时，附上那条请求的进度）`message_detail`。
+`not_found` 会自动重试（最多 7 天），`next_retry` 是下次重试时间；搜索结果异常为空或剧集资料尚未加载时 30 分钟后重试。
 `message` 永远是可以直接给用户看的中文。
 
 ## 示例

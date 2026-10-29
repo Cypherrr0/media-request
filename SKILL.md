@@ -55,7 +55,7 @@ description: 搜索电影/剧集，向自建媒体服务器（Jellyfin）提交�
 | uploading | 下载完了，正在传到网盘，一般几分钟到半小时。 |
 | importing | 正在入库，马上能在 Jellyfin 看到。 |
 | available | 可以看了，给出 `jellyfin_url`。剧集有 `episodes`（已有/已播出）。 |
-| already_exists | 片库里已经有了。若 `in_your_library` 为 false，说明在别人的库里，可以请管理员共享。 |
+| already_exists | 片库里已经有了。若 `in_your_library` 为 false，说明在别人的库里，可以请管理员共享。若带 `tracking`，说明别人已经请求过、还在处理中，`tracking` 里是那条请求的进度，不必重复请求。 |
 | quota_exceeded | 今天的次数（`daily_quota`）用完了，明天再试。 |
 | failed | 按 `reason` 解释，见下。 |
 
