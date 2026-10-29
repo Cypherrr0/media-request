@@ -2,3 +2,4 @@
 *.key
 secrets*
 req-keys.json
+__pycache__/
